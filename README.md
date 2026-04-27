@@ -30,3 +30,22 @@ Building a hands-on SOC analyst home lab to develop real-world security operatio
 - VirtualBox VM management
 - Splunk SPL search language
 - Log analysis
+
+
+
+
+
+
+
+
+
+
+## Distribited SSH Brute Force Investigation
+
+### Overview
+Investigated distributed SSH Brute Force attack using SPL rex command to extract attacking IPs from raw log data.
+
+### SPL Query Used
+index=main sourcetype="secure-2""Failed password"
+|rex"from (?<ip>[\d.]+)port"
+|stats dc(ip) as total_attackers
